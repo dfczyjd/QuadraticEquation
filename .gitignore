@@ -1,0 +1,8 @@
+# Build
+Debug
+x64
+.vs
+SquareEq/Debug
+SquareEq/x64
+# Doxygen docs
+Docs
