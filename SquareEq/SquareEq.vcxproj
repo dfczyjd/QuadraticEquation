@@ -121,7 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mytest.h" />
-    <ClInclude Include="mytest_tests.h" />
     <ClInclude Include="squareEq.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

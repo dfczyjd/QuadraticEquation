@@ -1,9 +1,11 @@
-# QuardraticEquation
+﻿# QuardraticEquation
 Программа для решения квадратного уравнения
 
 ## Сборка
-В репозитории лежат файлы решения и проекта для Visual Studio 2017.
-Сборка с помощью gcc: gcc SquareEq/\*.cpp
+В репозитории лежат файлы решения и проекта для Visual Studio 2017.  
+Сборка с помощью gcc:  
+gcc SquareEq/\*.cpp -o SquareEx.exe  
+squareEq.exe
 
 ## Документация
 Файл с конфигурацией для doxygen: Doxyfile.config
