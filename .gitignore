@@ -6,3 +6,7 @@ SquareEq/Debug
 SquareEq/x64
 # Doxygen docs
 Docs
+# Exectutable/object files (if compiling with gcc)
+*.o
+*.exe
+*.out
