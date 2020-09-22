@@ -29,10 +29,7 @@ void initializeTests(int maxTestCount)
 void registerTest(const char* name, TEST_FUNCTION testFunction)
 {
     if (testCount == testsLength)
-    {
-        puts("\x1b[31mWarning: adding more tests than expected");
-        printf("\x1b[37m");
-    }
+        puts("\x1b[31mWarning: adding more tests than expected\x1b[37m");
     tests[testCount].name = name;
     tests[testCount].testFunction = testFunction;
     ++testCount;
@@ -44,21 +41,36 @@ void runTests()
     int passCount = 0;
     for (int i = 0; i < testCount; ++i)
     {
+        errno = 0;
         bool result = tests[i].testFunction();
+        if (errno != 0)
+        {
+            char prefix[1024];
+            snprintf(prefix, 1024, "\x1b[31m\"%s\" failed with error\x1b[37m", tests[i].name);
+            perror(prefix);
+            continue;
+        }
         if (result)
         {
-            printf("\x1b[32m\"%s\" passed\n", tests[i].name);
+            printf("\x1b[32m\"%s\" passed\x1b[37m\n", tests[i].name);
         }
         else
         {
-            printf("\x1b[31m\"%s\" failed\n", tests[i].name);
+            printf("\x1b[31m\"%s\" failed\x1b[37m\n", tests[i].name);
         }
         passCount += result;
     }
-    printf("\x1b[37mTotal\t%d tests\nPassed\t%d tests\nFailed\t%d tests\n", testCount, passCount, testCount - passCount);
+    printf("Total\t%d tests\nPassed\t%d tests\nFailed\t%d tests\n", testCount, passCount, testCount - passCount);
 }
 
 void clearTests()
 {
     free(tests);
+}
+
+bool _assert(bool value, const char* file, int line)
+{
+    if (!value)
+        printf("\tAssertion in file %s on line %d failed\n", file, line);
+    return value;
 }

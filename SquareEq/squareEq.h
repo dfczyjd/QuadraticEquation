@@ -1,7 +1,5 @@
 #pragma once
 
-#define PRECISION 1e-7 /**< Precision of comparing float-point numbers */
-
 /**
     \brief Function for computing roots of quadratic equation
 
